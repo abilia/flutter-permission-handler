@@ -193,7 +193,16 @@ final class PermissionManager {
                     } else {
                         return PermissionConstants.PERMISSION_STATUS_RESTRICTED;
                     }
+                } else if (permission == PermissionConstants.PERMISSION_GROUP_SYSTEM_ALERT_WINDOW) {
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+                        return PermissionConstants.PERMISSION_STATUS_RESTRICTED;
+                    }
+                    if (Settings.canDrawOverlays(context)) {
+                        return PermissionConstants.PERMISSION_STATUS_GRANTED;
+                    }
+                    return PermissionConstants.PERMISSION_STATUS_DENIED;
                 }
+
                 final int permissionStatus = ContextCompat.checkSelfPermission(context, name);
                 if (permissionStatus != PackageManager.PERMISSION_GRANTED) {
                     return PermissionConstants.PERMISSION_STATUS_DENIED;

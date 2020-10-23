@@ -123,6 +123,16 @@ final class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
                                 null));
 
                 break;
+            case "openSystemAlertSetting":
+                appSettingsManager.openSystemAlertSetting(
+                        applicationContext,
+                        result::success,
+                        (String errorCode, String errorDescription) -> result.error(
+                                errorCode,
+                                errorDescription,
+                                null));
+
+                break;
             default:
                 result.notImplemented();
                 break;

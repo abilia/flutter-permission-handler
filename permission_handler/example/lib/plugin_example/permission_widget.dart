@@ -70,12 +70,23 @@ class _PermissionState extends State<PermissionWidget> {
   }
 
   void checkServiceStatus(BuildContext context, Permission permission) async {
+    final status = await permission.status;
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text((await permission.status).toString()),
+      content: Text((status).toString()),
     ));
+    setState(() {
+      print(status);
+      _permissionStatus = status;
+      print(_permissionStatus);
+    });
   }
 
   Future<void> requestPermission(Permission permission) async {
+    if (permission == Permission.systemAlertWindow) {
+      await openSystemAlertSetting();
+      return;
+    }
+
     final status = await permission.request();
 
     setState(() {
