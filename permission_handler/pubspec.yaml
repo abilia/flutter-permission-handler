@@ -19,7 +19,7 @@ dependencies:
   permission_handler_platform_interface:
     git:
       url: git://github.com/abilia/flutter-permission-handler.git
-      ref: systemAlertWindow
+      ref: 968579fd5d475857510e97aacbf9970380c226cd
       path: permission_handler_platform_interface/
 
 dev_dependencies:
