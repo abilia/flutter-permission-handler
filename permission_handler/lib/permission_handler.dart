@@ -20,6 +20,11 @@ PermissionHandlerPlatform get _handler => PermissionHandlerPlatform.instance;
 /// Returns [true] if the app settings page could be opened, otherwise [false].
 Future<bool> openAppSettings() => _handler.openAppSettings();
 
+/// Opens the app system Alert Setting page.
+///
+/// Returns [true] if the app settings page could be opened, otherwise [false].
+Future<bool> openSystemAlertSetting() => _handler.openSystemAlertSetting();
+
 /// Actions that can be executed on a permission.
 extension PermissionActions on Permission {
   /// The current status of this permission.
