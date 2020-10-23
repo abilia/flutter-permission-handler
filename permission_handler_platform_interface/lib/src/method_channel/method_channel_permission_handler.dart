@@ -56,6 +56,16 @@ class MethodChannelPermissionHandler extends PermissionHandlerPlatform {
     return wasOpened ?? false;
   }
 
+  /// On android, opens system alert settings page.
+  ///
+  /// Returns [true] if the app system alert settings page could be opened,
+  /// otherwise [false].
+  Future<bool> openSystemAlertSetting() async {
+    final wasOpened =
+        await _methodChannel.invokeMethod('openSystemAlertSetting');
+    return wasOpened;
+  }
+
   /// Requests the user for access to the supplied list of [Permission]s, if
   /// they have not already been granted before.
   ///
