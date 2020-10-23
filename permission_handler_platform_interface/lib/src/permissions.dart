@@ -94,8 +94,12 @@ class Permission {
   /// iOS: Nothing
   static const activityRecognition = Permission._(18);
 
+  /// When running on Android: System Alert Window
+  /// iOS: Nothing
+  static const systemAlertWindow = Permission._(19);
+
   /// The unknown only used for return type, never requested
-  static const unknown = Permission._(19);
+  static const unknown = Permission._(20);
 
   /// Returns a list of all possible [PermissionGroup] values.
   static const List<Permission> values = <Permission>[
@@ -118,6 +122,7 @@ class Permission {
     notification,
     accessMediaLocation,
     activityRecognition,
+    systemAlertWindow,
     unknown,
   ];
 
@@ -141,6 +146,7 @@ class Permission {
     'notification',
     'access_media_location',
     'activity_recognition',
+    'systemAlertWindow',
     'unknown',
   ];
 
