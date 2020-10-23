@@ -68,6 +68,15 @@ abstract class PermissionHandlerPlatform extends PlatformInterface {
     throw UnimplementedError('openAppSettings() has not been implemented.');
   }
 
+  /// Opens the app settings page.
+  ///
+  /// Returns [true] if the app settings page could be opened, otherwise
+  /// [false].
+  Future<bool> openSystemAlertSetting() {
+    throw UnimplementedError(
+        'openSystemAlertSetting() has not been implemented.');
+  }
+
   /// Requests the user for access to the supplied list of [Permission]s, if
   /// they have not already been granted before.
   ///
