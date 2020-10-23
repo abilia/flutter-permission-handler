@@ -20,11 +20,16 @@ PermissionHandlerPlatform get _handler => PermissionHandlerPlatform.instance;
 /// Returns [true] if the app settings page could be opened, otherwise [false].
 Future<bool> openAppSettings() => _handler.openAppSettings();
 
+/// Opens the app settings page.
+///
+/// Returns [true] if the app settings page could be opened, otherwise [false].
+Future<bool> openSystemAlertSetting() => _handler.openSystemAlertSetting();
+
 /// Actions that can be executed on a permission.
 extension PermissionActions on Permission {
   /// The current status of this permission.
-  /// 
-  /// The Android-only [PermissionStatus.permanentlyDenied] status will only be 
+  ///
+  /// The Android-only [PermissionStatus.permanentlyDenied] status will only be
   /// calculated if the active context is an Activity. If it isn't,
   /// [PermissionStatus.denied] will be returned.
   Future<PermissionStatus> get status => _handler.checkPermissionStatus(this);

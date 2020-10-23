@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../plugin_example/permission_list.dart';
 
 import 'info_page.dart';
+import 'appsettings_page.dart';
 
 /// The name of the plugin, which will be displayed throughout the example App.
 const String pluginName = 'Permission Handler';
@@ -28,11 +29,13 @@ const EdgeInsets defaultVerticalPadding = EdgeInsets.symmetric(vertical: 24);
 /// Returns a [List] with [IconData] to show in the [AppHome] [AppBar].
 final List<IconData> icons = [
   Icons.list,
+  Icons.settings,
   Icons.info_outline,
 ];
 
 /// Returns a [List] with [Widget]s to construct pages in the [AppBar].
 final List<Widget> pages = [
   PermissionList(),
+  AppSettingsPage(),
   InfoPage(),
 ];

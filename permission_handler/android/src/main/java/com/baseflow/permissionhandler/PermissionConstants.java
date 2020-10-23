@@ -30,7 +30,8 @@ final class PermissionConstants {
     static final int PERMISSION_GROUP_NOTIFICATION = 16;
     static final int PERMISSION_GROUP_ACCESS_MEDIA_LOCATION = 17;
     static final int PERMISSION_GROUP_ACTIVITY_RECOGNITION = 18;
-    static final int PERMISSION_GROUP_UNKNOWN = 19;
+    static final int PERMISSION_GROUP_SYSTEM_ALERT_WINDOW = 19;
+    static final int PERMISSION_GROUP_UNKNOWN = 20;
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({
@@ -53,6 +54,7 @@ final class PermissionConstants {
             PERMISSION_GROUP_NOTIFICATION,
             PERMISSION_GROUP_ACCESS_MEDIA_LOCATION,
             PERMISSION_GROUP_ACTIVITY_RECOGNITION,
+            PERMISSION_GROUP_SYSTEM_ALERT_WINDOW,
             PERMISSION_GROUP_UNKNOWN,
     })
     @interface PermissionGroup {

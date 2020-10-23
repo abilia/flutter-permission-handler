@@ -77,7 +77,7 @@ final class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
                 permissionManager.checkPermissionStatus(
                         permission,
                         applicationContext,
-						activity,
+                        activity,
                         result::success,
                         (String errorCode, String errorDescription) -> result.error(
                                 errorCode,
@@ -115,6 +115,16 @@ final class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
             }
             case "openAppSettings":
                 appSettingsManager.openAppSettings(
+                        applicationContext,
+                        result::success,
+                        (String errorCode, String errorDescription) -> result.error(
+                                errorCode,
+                                errorDescription,
+                                null));
+
+                break;
+            case "openSystemAlertSetting":
+                appSettingsManager.openSystemAlertSetting(
                         applicationContext,
                         result::success,
                         (String errorCode, String errorDescription) -> result.error(

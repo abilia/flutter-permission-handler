@@ -120,7 +120,16 @@ final class PermissionManager {
                 intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
                 intent.setData(Uri.parse("package:" + packageName));
                 activity.startActivityForResult(intent, PermissionConstants.PERMISSION_CODE_IGNORE_BATTERY_OPTIMIZATIONS);
-            } else {
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && permission == PermissionConstants.PERMISSION_GROUP_SYSTEM_ALERT_WINDOW) {
+                String packageName = activity.getPackageName();
+                Intent intent = new Intent();
+                intent.setAction(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                intent.setData(Uri.parse("package:" + packageName));
+                activity.startActivity(intent);
+                HashMap<Integer, Integer> results = new HashMap<>();
+                results.put(PermissionConstants.PERMISSION_GROUP_SYSTEM_ALERT_WINDOW, PermissionConstants.PERMISSION_STATUS_NOT_DETERMINED);
+                successCallback.onSuccess(results);
+             } else {
                 permissionsToRequest.addAll(names);
             }
         }
@@ -194,6 +203,17 @@ final class PermissionManager {
                         return PermissionConstants.PERMISSION_STATUS_RESTRICTED;
                     }
                 }
+
+                if (permission == PermissionConstants.PERMISSION_GROUP_SYSTEM_ALERT_WINDOW) {
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+                        return PermissionConstants.PERMISSION_STATUS_RESTRICTED;
+                    }
+                    if (Settings.canDrawOverlays(context)) {
+                        return PermissionConstants.PERMISSION_STATUS_GRANTED;
+                    }
+                    return PermissionConstants.PERMISSION_STATUS_DENIED;
+                }
+
                 final int permissionStatus = ContextCompat.checkSelfPermission(context, name);
                 if (permissionStatus == PackageManager.PERMISSION_DENIED) {
                     if (!PermissionUtils.getRequestedPermissionBefore(context, name)) {
